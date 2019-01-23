@@ -29,7 +29,7 @@ class Network(Model):
 
         self.datacollector = DataCollector(
             model_reporters={
-                "graph": return_network
+                "graph": return_network,
             },
             agent_reporters={
                 "preference": "preference",

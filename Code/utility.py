@@ -53,8 +53,40 @@ def compute_preferences(model):
     return np.mean(agent_preferences)
 
 def return_network(model):
-    G = nx.draw_networkx(model.G, model.layout)
-    plt.show()
+    nodes_A = []
+    nodes_B = []
+    nodes_preferences_A = []
+    nodes_preferences_B = []
+    reputations = nx.get_edge_attributes(model.G,'reputation')
+    # print(reputations)
+
+    for edge in model.G.edges():
+        print(model.G.edges[edge])
+        print(edge)
+
+
+
+    # for node in model.G.nodes():
+    #     model.G.nodes()[node]['opinion'] = model.G.nodes()[node]["agent"][0].opinion
+    #     model.G.nodes()[node]['preference'] = model.G.nodes()[node]["agent"][0].preference
+    #     model.G.nodes()[node]['id'] = node
+
+    #     if model.G.nodes()[node]['opinion'] == 0:
+    #         nodes_A.append(node)
+    #         nodes_preferences_A.append(model.G.nodes()[node]["agent"][0].preference)
+
+    #     else:
+    #         nodes_B.append(node)
+    #         nodes_preferences_B.append(model.G.nodes()[node]["agent"][0].preference)
+
+
+    # nx.draw_networkx_nodes(model.G, model.layout, node_size=50, node_color=nodes_preferences_A, nodelist=nodes_A, cmap=plt.cm.Blues)
+    # nx.draw_networkx_nodes(model.G, model.layout, node_size=50, node_color=nodes_preferences_B, nodelist=nodes_B, cmap=plt.cm.Reds)
+    # nx.draw_networkx_edges(model.G, model.layout, alpha=0.5, width=1)
+    # plt.axis('off')
+    # plt.show()
+    # # G = nx.draw_networkx(model.G, model.layout,node_color=)
+    # # plt.show()
 
 
 def select_network_type(network_type, N, no_of_neighbors, beta_component):
