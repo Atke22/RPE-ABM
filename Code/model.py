@@ -18,7 +18,7 @@ class Network(Model):
         self.schedule = RandomActivation(self)
         # self.node_positions = nx.spring_layout(self.G)
         self.node_list = self.random.sample(self.G.nodes(), self.num_agents)
-        
+        self.layout = nx.spring_layout(self.G, dim=2)
 	   # Initialy set to 1 agreement and 1 agreement to avoid 100%/0% probability scenrarios
         nx.set_edge_attributes(self.G, 2, 'total_encounters')
         nx.set_edge_attributes(self.G, 1, 'times_agreed')
@@ -29,7 +29,7 @@ class Network(Model):
 
         self.datacollector = DataCollector(
             model_reporters={
-                "preferences": compute_opinions
+                "graph": return_network
             },
             agent_reporters={
                 "preference": "preference",

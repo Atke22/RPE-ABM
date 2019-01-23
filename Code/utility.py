@@ -2,6 +2,7 @@ import numpy as np
 from globals import *
 import random
 import networkx as nx
+import matplotlib.pyplot as plt
 from scipy.stats import norm
 
 def get_preference_list(N):
@@ -51,9 +52,9 @@ def compute_preferences(model):
     agent_preferences = [agent.preference for agent in model.schedule.agents]
     return np.mean(agent_preferences)
 
-def compute_opinions(model):
-    agent_opinions = [agent.opinion for agent in model.schedule.agents]
-    return np.mean(agent_opinions)
+def return_network(model):
+    G = nx.draw_networkx(model.G, model.layout)
+    plt.show()
 
 
 def select_network_type(network_type, N, no_of_neighbors, beta_component):
